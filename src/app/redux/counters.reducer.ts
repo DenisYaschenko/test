@@ -19,13 +19,10 @@ export function countersReducer(state = initialState, action: Action) {
         ...state,
         second: state.second - 1
       };
-    case ActionsTypes.Reset:
-      return state = {
-        first: -5,
-        second: 10
-      };
-    default:
+    case ActionsTypes.Change:
       return state;
+    default:
+      return initialState;
   }
 }
 

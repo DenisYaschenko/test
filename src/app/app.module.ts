@@ -6,6 +6,8 @@ import {countersReducer} from './redux/counters.reducer';
 import {AppComponent} from './app.component';
 import {CounterComponent} from './counter/counter.component';
 import {ViewComponent} from './view/view.component';
+import {EffectsModule} from '@ngrx/effects';
+import {CountersEffects} from './redux/counters.effects';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import {ViewComponent} from './view/view.component';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({count: countersReducer})
+    StoreModule.forRoot({count: countersReducer}),
+    EffectsModule.forRoot([CountersEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
