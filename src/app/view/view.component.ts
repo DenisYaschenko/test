@@ -1,25 +1,22 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {interval, Observable} from 'rxjs';
 import {AppState} from '../redux/app.state';
-import {Decrement, Increment, Change} from '../redux/counters.action';
+import {Change} from '../redux/counters.action';
 
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css']
 })
-export class ViewComponent implements OnInit {
+export class ViewComponent implements OnDestroy {
   state: Observable<AppState>;
   intervalSub$;
 
-  constructor(private store: Store<{count: AppState}>) {
+  constructor(private store: Store<{ count: AppState }>) {
     this.state = store.pipe(
-     select('count')
+      select('count')
     );
-  }
-
-  ngOnInit() {
   }
 
   start() {
@@ -32,5 +29,9 @@ export class ViewComponent implements OnInit {
     if (this.intervalSub$) {
       this.intervalSub$.unsubscribe();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.intervalSub$.unsubscribe();
   }
 }

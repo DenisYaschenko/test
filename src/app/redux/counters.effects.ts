@@ -5,7 +5,8 @@ import {switchMap} from 'rxjs/operators';
 
 @Injectable()
 export class CountersEffects {
-  constructor(private actions$: Actions) {}
+  constructor(private actions$: Actions) {
+  }
 
   @Effect() start = this.actions$.pipe(
     ofType(ActionsTypes.Change),

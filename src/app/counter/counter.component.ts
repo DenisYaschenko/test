@@ -7,7 +7,9 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CounterComponent implements OnInit {
   @Input() count;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
