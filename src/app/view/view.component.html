@@ -1,0 +1,10 @@
+<div class="container">
+  <app-counter [count]="(state | async).first | json"></app-counter>
+  <app-counter [count]="(state | async).second | json"></app-counter>
+</div>
+
+<div class="container">
+  <button (click)="start()">Start</button>
+  <button (click)="stop()">Stop</button>
+</div>
+
